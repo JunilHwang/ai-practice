@@ -26,11 +26,11 @@ if __name__ == '__main__' :
   (graph, ) = pydot.graph_from_dot_data(clf_dot)
   graph.write_png('graph.png')
 
-  # xClass1 = x[y == 0]
-  # plt.scatter(xClass1[:, 0], xClass1[:, 1], color = (1.0, 0, 0), label = 'class1')
+  xClass1 = x[y == 0]
+  plt.scatter(xClass1[:, 0], xClass1[:, 1], color = (1.0, 0, 0), label = 'class1')
 
-  # xClass2 = x[y == 1]
-  # plt.scatter(xClass2[:, 0], xClass2[:, 1], color = (0, 0, 1.0), label = 'class2')
+  xClass2 = x[y == 1]
+  plt.scatter(xClass2[:, 0], xClass2[:, 1], color = (0, 0, 1.0), label = 'class2')
 
-  # plt.legend(loc='best')
-  # plt.show()
+  plt.legend(loc='best')
+  plt.show()
