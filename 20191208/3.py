@@ -7,7 +7,7 @@ from sys import argv
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 if __name__ == '__main__' :
@@ -34,11 +34,11 @@ if __name__ == '__main__' :
 
   for nEstimators in [10, 15, 20, 25, 30, 35, 40, 45, 50] :
 
-    ada = AdaBoostClassifier(base_estimator=tree, n_estimators=nEstimators)
-    ada.fit(xTrain, yTrain)
-    yTrainPred = ada.predict(xTrain)
-    yTestPred = ada.predict(xTest)
+    RF = RandomForestClassifier(max_depth=2, n_estimators=nEstimators)
+    RF.fit(xTrain, yTrain)
+    yTrainPred = RF.predict(xTrain)
+    yTestPred = RF.predict(xTest)
 
-    adaTrain = accuracy_score(yTrain, yTrainPred)
-    adaTest = accuracy_score(yTest, yTestPred)
-    print('<N: %d> AdaBoost train/test %.1f/%.1f' % (nEstimators, adaTrain, adaTest))
+    RFTrain = accuracy_score(yTrain, yTrainPred)
+    RFTest = accuracy_score(yTest, yTestPred)
+    print('<N: %d> train/test %.3f/%.3f' % (nEstimators, RFTrain, RFTest))
